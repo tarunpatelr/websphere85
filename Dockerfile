@@ -4,4 +4,7 @@ RUN /work/configure.sh
 
 LABEL authors="tarun"
 
-ENTRYPOINT ["top", "-b"]
+EXPOSE 9043
+EXPOSE 9060
+EXPOSE 9080
+EXPOSE 9443
