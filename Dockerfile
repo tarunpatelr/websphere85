@@ -1,10 +1,6 @@
 FROM icr.io/appcafe/websphere-traditional:latest
 
 ENV ENABLE_BASIC_LOGGING=true
-ENV UPDATE_HOSTNAME=true
-ENV PROFILE_NAME=myprofile
-ENV NODE_NAME=mynode
-ENV SERVER_NAME=myserver
 
 LABEL authors="tarun"
 
