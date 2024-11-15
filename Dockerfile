@@ -1,5 +1,4 @@
 FROM icr.io/appcafe/websphere-traditional:latest
-# copy property files and jython scripts, using the flag `--chown=was:root` to set the appropriate permission
 
 ENV ENABLE_BASIC_LOGGING=true
 LABEL authors="tarun"
@@ -15,5 +14,10 @@ COPY deploy/hello-world.war /tmp/deploy/
 COPY deploy/deployApp.py /tmp/deploy/
 COPY deploy/updateClassLoader.py /tmp/deploy/
 
-RUN /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -username wsadmin -password $(cat /tmp/PASSWORD) -lang jython -f /tmp/deploy/deployHelloWorldApp.py
+ENV TEST_PWD "test"
+RUN echo $TEST_PWD
+
+ENV ADMIN_PWD $(cat /tmp/PASSWORD)
+
+RUN /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -username wsadmin -password $ADMIN_PWD -lang jython -f /tmp/deploy/deployHelloWorldApp.py
 #RUN /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -username wsadmin -password $(cat /tmp/PASSWORD) -lang jython -f /tmp/deploy/deployApp.py
