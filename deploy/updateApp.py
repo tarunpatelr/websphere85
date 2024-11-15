@@ -1,0 +1,1 @@
+AdminApp.update('MyApp', 'app', '[-operation update -contents /tmp/deploy/myapp.war  -usedefaultbindings -nodeployejb]')
