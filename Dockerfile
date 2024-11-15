@@ -9,8 +9,9 @@ EXPOSE 9443
 
 RUN /work/configure.sh
 
+RUN mkdir /tmp/deploy
 COPY deploy/myapp.war /tmp/deploy/
-COPY deploy/hello-world.war.war /tmp/deploy/
+COPY deploy/hello-world.war /tmp/deploy/
 COPY deploy/deployApp.py /tmp/deploy/
 COPY deploy/updateClassLoader.py /tmp/deploy/
 
