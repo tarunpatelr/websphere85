@@ -1,9 +1,10 @@
 import time
 
-AdminApp.install('/tmp/deploy/myapp.war', '[-appname MyApp -cell DefaultCell01 -server server1]')
+AdminApp.install('/tmp/deploy/myapp.war', '[-appname MyApp -cell DefaultCell01 -server server1 -MapWebModToVH [[ myapp.war myapp.war,WEB-INF/web.xml default_host ]]]')
 AdminConfig.save()
 
+time.sleep(20)
 
-time.sleep(100)
-Sync1 = AdminControl.completeObjectName('type=NodeSync,process=nodeagent,node=DefaultNode01,*')
-AdminControl.invoke(Sync1, 'sync')
+appManager = AdminControl.queryNames('cell=DefaultCell01,node=DefaultNode01,type=ApplicationManager,process=server1,*')
+print appManager
+AdminControl.invoke(appManager, 'startApplication', 'MyApp')
