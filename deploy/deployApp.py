@@ -5,5 +5,5 @@ AdminConfig.save()
 
 
 time.sleep(100)
-Sync1 = AdminControl.completeObjectName('type=NodeSync,process=nodeagent,node=AppSrvNode01,*')
+Sync1 = AdminControl.completeObjectName('type=NodeSync,process=nodeagent,node=DefaultNode01,*')
 AdminControl.invoke(Sync1, 'sync')
