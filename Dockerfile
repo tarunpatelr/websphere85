@@ -18,6 +18,7 @@ ENV TEST_PWD "test"
 RUN echo $TEST_PWD
 
 ENV ADMIN_PWD $(cat /tmp/PASSWORD)
+RUN echo $ADMIN_PWD
 
 RUN /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -username wsadmin -password $ADMIN_PWD -lang jython -f /tmp/deploy/deployHelloWorldApp.py
 #RUN /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -username wsadmin -password $(cat /tmp/PASSWORD) -lang jython -f /tmp/deploy/deployApp.py
